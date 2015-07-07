@@ -35,13 +35,12 @@ sub call {
                 my $file_attr = $self->file_etag || [qw/inode mtime size/];
                 my @stats = stat $res->[2];
                 if ( $stats[9] == time - 1 ) {
-
-            # if the file was modified less than one second before the request
-            # it may be modified in a near future, so we return a weak etag
+                    # if the file was modified less than one second before the request
+                    # it may be modified in a near future, so we return a weak etag
                     $etag = "W/";
                 }
                 if ( grep {/inode/} @$file_attr ) {
-                    $etag .= ( sprintf "%x", $stats[2] );
+                    $etag .= ( sprintf "%x", $stats[1] );
                 }
                 if ( grep {/mtime/} @$file_attr ) {
                     $etag .= "-" if ( $etag && $etag !~ /-$/ );
