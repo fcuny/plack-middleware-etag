@@ -34,7 +34,7 @@ my $unmodified_handler = builder {
 
 my $file_handler = builder {
    enable "Plack::Middleware::ETag";
-   open my $fh, 'README';
+   open my $fh, 'README.md';
    sub {[200, ['Content-Type' => 'text/html', ], $fh]};
 };
 
