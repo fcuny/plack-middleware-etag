@@ -9,8 +9,6 @@ use Plack::Util;
 use Plack::Util::Accessor
     qw( file_etag cache_control check_last_modified_header);
 
-our $VERSION = '0.03';
-
 use parent qw/Plack::Middleware/;
 
 sub call {
